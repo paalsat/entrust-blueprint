@@ -14,6 +14,7 @@ Contents
 
    overview
    architecture
+   legal
    operating_procs
    interfaces
    glossary
