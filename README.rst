@@ -1,1 +1,1 @@
-*Repository for the EOSC-ENTRUST Blueprint & Interoperability Framework*.
+**Repository for the EOSC-ENTRUST Blueprint & Interoperability Framework**.
