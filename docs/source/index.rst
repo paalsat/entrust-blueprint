@@ -12,5 +12,8 @@ Contents
 
 .. toctree::
 
-   usage
-   api
+   overview
+   architecture
+   operating_procs
+   interfaces
+   glossary
