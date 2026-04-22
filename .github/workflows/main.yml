@@ -26,6 +26,9 @@ jobs:
         run: |
           # Fix the Git ownership error
           git config --global --add safe.directory /github/workspace
+
+          echo ""Listing generated report files:"
+          ls -R architecture/.report
           
           # Prepare image folder
           mkdir -p docs/images
