@@ -20,8 +20,8 @@ jobs:
             dbus-run-session -- xvfb-run -a /opt/Archi/Archi 
             -nosplash -consoleLog -application com.archimatetool.commandline.app
             --loadModel /github/workspace/architecture/entrust_architecture.archimate 
-            --script.run /github/workspace/architecture/rename_model.ajs
-            --html.createReport /github/workspace/architecture/.report
+            --script.run /github/workspace/architecture/export_views.ajs
+#            --html.createReport /github/workspace/architecture/.report
 
       - name: Extract Images and Commit
         run: |
