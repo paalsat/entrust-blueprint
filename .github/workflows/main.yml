@@ -16,11 +16,10 @@ jobs:
       - name: Generate Archi Report
         uses: docker://ghcr.io/woozymasta/archimate-ci-image:5.7.0-1.0.6
         with:
-          # We use entrypoint override to bypass the problematic script
           args: >
             dbus-run-session -- xvfb-run -a /opt/Archi/Archi 
             -nosplash -consoleLog -application com.archimatetool.commandline.app
-            --model /github/workspace/architecture/entrust_architecture.archimate 
+            --loadModel /github/workspace/architecture/entrust_architecture.archimate 
             --html.createReport /github/workspace/architecture/.report
 
       - name: Extract Images and Commit
