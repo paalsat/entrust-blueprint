@@ -1,3 +1,8 @@
+var file = new java.io.File("/github/workspace/architecture/HEARTBEAT.txt");
+var pw = new java.io.PrintWriter(new java.io.FileWriter(file));
+pw.println("Script engine reached this point.");
+pw.close();
+
 var outputDir = "architecture/.images/";
 
 var logFile = new java.io.FileWriter("/github/workspace/architecture/.images/script_debug.log", true);
