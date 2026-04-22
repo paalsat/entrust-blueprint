@@ -26,7 +26,6 @@ jobs:
             -nosplash -consoleLog -application com.archimatetool.commandline.app
             --loadModel /github/workspace/architecture/entrust_architecture.archimate 
             --script.run /github/workspace/architecture/export_views.ajs
-#            --html.createReport /github/workspace/architecture/.report
 
       - name: Extract Images and Commit
         run: |
