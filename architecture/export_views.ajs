@@ -1,5 +1,8 @@
 var outputDir = "architecture/.images/";
 
+var logFile = new java.io.FileWriter("/github/workspace/architecture/.images/script_debug.log", true);
+logFile.write("Script started at: " + new java.util.Date() + "\n");
+
 console.log("Exporting views to " + outputDir);
 print("Exporting views to " + outputDir);
 
