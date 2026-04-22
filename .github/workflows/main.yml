@@ -19,8 +19,7 @@ jobs:
           # We use entrypoint override to bypass the problematic script
           args: >
             dbus-run-session -- xvfb-run -a /opt/Archi/Archi 
-            -application com.archimatetool.commandline.app 
-            -consoleLog -nosplash 
+            -nosplash -consoleLog -application com.archimatetool.commandline.app
             --model /github/workspace/architecture/entrust_architecture.archimate 
             --html.createReport /github/workspace/architecture/.report
 
