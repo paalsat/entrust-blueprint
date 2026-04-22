@@ -1,4 +1,4 @@
-var outputDir = "/github/workspace/architecture/.report/images/";
+var outputDir = "architecture/.images/";
 
 // Iterate through all views in the model
 $("view").each(function(v) {
