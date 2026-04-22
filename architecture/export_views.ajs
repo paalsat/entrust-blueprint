@@ -5,7 +5,9 @@ $("view").each(function(v) {
     // Sanitize the name to remove illegal filename characters
     var fileName = v.name.replace(/[/\\?%*:|"<>]/g, '-') + ".png";
     
+    console.log("Exporting view: " + v.name + " as " + fileName);
+
     // Export the view
-    var bytes = $.model.renderViewToImage(v, {format: "png", scale: 2});
-    v.renderViewToImage(outputDir + fileName);
+    //var bytes = $.model.renderViewToImage(v, {format: "png", scale: 2});
+    v.renderViewToImage(outputDir + fileName, {format: "png", scale: 2});
 });
