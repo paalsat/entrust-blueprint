@@ -16,7 +16,7 @@ jobs:
       - name: Prepare Image Directory
         run: |
           mkdir -p architecture/.images
-          ls -Ra architecture
+          ls -lRa architecture
 
       - name: Generate Archi Report
         uses: docker://ghcr.io/woozymasta/archimate-ci-image:5.7.0-1.0.6
