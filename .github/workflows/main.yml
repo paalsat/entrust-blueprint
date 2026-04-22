@@ -16,7 +16,7 @@ jobs:
       - name: Prepare Image Directory
         run: |
           mkdir -p architecture/.images
-          ls -R architecture
+          ls -Ra architecture
 
       - name: Generate Archi Report
         uses: docker://ghcr.io/woozymasta/archimate-ci-image:5.7.0-1.0.6
@@ -34,7 +34,7 @@ jobs:
           git config --global --add safe.directory /github/workspace
 
           echo "Listing generated report files:"
-          ls -R architecture
+          ls -Ra architecture
           
           # Prepare image folder
           mkdir -p docs/images
