@@ -32,16 +32,16 @@ jobs:
           git config --global --add safe.directory /github/workspace
 
           echo "Listing generated report files:"
-          ls -R architecture
+          ls -R architecture/.images
           
           # Prepare image folder
           mkdir -p docs/images
           
           # Copy images from the generated report
-          cp -r architecture/.report/images/* docs/images/
+          cp -r architecture/.images/* docs/images/
           
           # Cleanup report (optional, keeps repo clean)
-          rm -rf architecture/.report
+          rm -rf architecture/.images
           
           # Commit
           git config --local user.email "action@github.com"
