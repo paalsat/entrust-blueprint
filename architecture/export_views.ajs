@@ -1,5 +1,7 @@
 var outputDir = "architecture/.images/";
 
+console.log("Exporting views to " + outputDir);
+
 // Iterate through all views in the model
 $("view").each(function(v) {
     // Sanitize the name to remove illegal filename characters
