@@ -12,13 +12,13 @@ console.log("Exporting views to " + outputDir);
 print("Exporting views to " + outputDir);
 
 // Iterate through all views in the model
-$("view").each(function(v) {
+//$("view").each(function(v) {
     // Sanitize the name to remove illegal filename characters
-    var fileName = v.name.replace(/[/\\?%*:|"<>]/g, '-') + ".png";
+//    var fileName = v.name.replace(/[/\\?%*:|"<>]/g, '-') + ".png";
     
-    console.log("Exporting view: " + v.name + " as " + fileName);
+//    console.log("Exporting view: " + v.name + " as " + fileName);
 
     // Export the view
     //var bytes = $.model.renderViewToImage(v, {format: "png", scale: 2});
-    v.renderViewToImage(outputDir + fileName, {format: "png", scale: 2});
-});
+//    v.renderViewToImage(outputDir + fileName, {format: "png", scale: 2});
+//});
