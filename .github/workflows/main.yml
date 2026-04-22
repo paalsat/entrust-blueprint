@@ -1,0 +1,34 @@
+name: Export ArchiMate Images
+on: 
+  push:
+    branches:
+      - main
+
+jobs:
+  archi_export:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+
+      - name: Generate Archi Report
+        id: archi
+        uses: WoozyMasta/archimate-ci-image@5.7.0-1.0.6
+        with:
+          archiHtmlReportEnabled: true
+          githubToken: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Extract Images for Documentation
+        run: |
+          mkdir -p docs/images
+          cp -r /archi/report/html/images/* docs/images/
+          
+      - name: Commit Images
+        run: |
+          git config --local user.email "action@github.com"
+          git config --local user.name "GitHub Action"
+          git add docs/images/
+          git commit -m "Automated image export from ArchiMate model" || exit 0
+          git push
