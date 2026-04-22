@@ -17,7 +17,7 @@ jobs:
         id: archi
         uses: WoozyMasta/archimate-ci-image@5.7.0-1.0.6
         env:
-          ARCHI_PROJECT_PATH: ${{ github.workspace }}/architecture/entrust_architecture.archimate
+          ARCHI_PROJECT_PATH: ${{ github.workspace }}/architecture
         with:
           archiHtmlReportEnabled: true
           githubToken: ${{ secrets.GITHUB_TOKEN }}
