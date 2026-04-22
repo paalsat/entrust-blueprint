@@ -19,15 +19,16 @@ jobs:
         env:
           ARCHI_PROJECT_PATH: ${{ github.workspace }}/architecture
           ARCHI_EXTRA_ARGS: "--model /github/workspace/architecture/entrust_architecture.archimate"
-          ARCHI_EXPORT_MODEL_ENABLED: false
         with:
           archiHtmlReportEnabled: true
+          archiExportModelEnabled: false
           githubToken: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Extract Images for Documentation
         run: |
+          git config --global --add safe.directory /github/workspace
           mkdir -p docs/images
-          cp -r /archi/report/html/images/* docs/images/
+          cp -r architecture/.archi_report/images/* docs/images/
           
       - name: Commit Images
         run: |
