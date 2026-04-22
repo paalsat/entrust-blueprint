@@ -1,0 +1,11 @@
+var outputDir = "/github/workspace/architecture/.report/images/";
+
+// Iterate through all views in the model
+$("view").each(function(v) {
+    // Sanitize the name to remove illegal filename characters
+    var fileName = v.name.replace(/[/\\?%*:|"<>]/g, '-') + ".png";
+    
+    // Export the view
+    var bytes = $.model.renderViewToImage(v, {format: "png", scale: 2});
+    v.renderViewToImage(outputDir + fileName);
+});
