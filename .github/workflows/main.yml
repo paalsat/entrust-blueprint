@@ -13,10 +13,10 @@ jobs:
       - name: Checkout Repository
         uses: actions/checkout@v4
 
-      - name: Prepare Image Directory
-        run: |
-          mkdir -p architecture/.images
-          ls -lRa architecture
+#      - name: Prepare Image Directory
+#        run: |
+#          mkdir -p architecture/.images
+#          ls -lRa architecture
 
       - name: Generate Archi Report
         uses: docker://ghcr.io/woozymasta/archimate-ci-image:5.7.0-1.0.6
@@ -25,7 +25,8 @@ jobs:
             dbus-run-session -- xvfb-run -a /opt/Archi/Archi 
             -nosplash -consoleLog -application com.archimatetool.commandline.app
             --loadModel /github/workspace/architecture/entrust_architecture.archimate 
-            --script.run /github/workspace/architecture/export_views.ajs
+            --html.createReport /github/workspace/architecture/.report
+#            --script.run /github/workspace/architecture/export_views.ajs
 
       - name: Extract Images and Commit
         run: |
@@ -33,7 +34,7 @@ jobs:
           git config --global --add safe.directory /github/workspace
 
           echo "Listing generated report files:"
-          ls -Ra architecture
+          ls -R architecture/.report
           
           # Prepare image folder
           mkdir -p docs/images
@@ -42,7 +43,7 @@ jobs:
           cp -r architecture/.images/* docs/images/
           
           # Cleanup report (optional, keeps repo clean)
-          rm -rf architecture/.images
+          rm -rf architecture/.report
           
           # Commit
           git config --local user.email "action@github.com"
