@@ -32,6 +32,7 @@ jobs:
         run: |
           pip install beautifulsoup4
           model=`ls architecture/.report/id-* | head`
+          echo "Model directory: $model"
           python architecture/rename_images.py architecture/.report/$model
 
       - name: Extract Images and Commit
