@@ -31,7 +31,8 @@ jobs:
       - name: Rename Images
         run: |
           pip install beautifulsoup4
-          python architecture/rename_images.py architecture/.report
+          model=`ls architecture/.report/id-* | head`
+          python architecture/rename_images.py architecture/.report/$model
 
       - name: Extract Images and Commit
         run: |
