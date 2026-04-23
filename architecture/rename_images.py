@@ -1,12 +1,14 @@
 import os
 import re
+import sys
 from bs4 import BeautifulSoup
 
-report_path = "./.report"
-images_path = os.path.join(report_path, "images")
-views_path = os.path.join(report_path, "views")
+_report_path = "./architecture/.report"
 
-def rename_images():
+def rename_images(report_path):
+    images_path = os.path.join(report_path, "images")
+    views_path = os.path.join(report_path, "views")
+
     if not os.path.exists(views_path):
         print("Views folder not found. Check report path.")
         return
@@ -29,4 +31,5 @@ def rename_images():
                         os.rename(old_image, new_image)
 
 if __name__ == "__main__":
-    rename_images()
+    report_path = _report_path if len(sys.argv) == 1 else sys.argv[1]
+    rename_images(report_path)
