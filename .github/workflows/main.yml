@@ -31,7 +31,7 @@ jobs:
       - name: Rename Images
         run: |
           pip install beautifulsoup4
-          model=`ls architecture/.report/id-* | head`
+          model=`ls -d architecture/.report/id-* | head -n 1`
           echo "Model directory: $model"
           python architecture/rename_images.py architecture/.report/$model
 
