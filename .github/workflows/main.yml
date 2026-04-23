@@ -28,6 +28,11 @@ jobs:
             --html.createReport /github/workspace/architecture/.report
 #            --script.run /github/workspace/architecture/export_views.ajs
 
+      - name: Rename Images
+        run: |
+          pip install beautifulsoup4
+          python architecture/rename_images.py
+
       - name: Extract Images and Commit
         run: |
           # Fix the Git ownership error
