@@ -29,6 +29,7 @@ jobs:
 #            --script.run /github/workspace/architecture/export_views.ajs
 
       - name: Rename Images
+        id: rename_images
         run: |
           pip install beautifulsoup4
           model=`ls -d architecture/.report/id-* | head -n 1`
@@ -37,20 +38,21 @@ jobs:
           sudo chown -R $USER:$USER architecture/.report/
           ls -ld $model/images
           python architecture/rename_images.py $model
+          echo "images_dir=$model/images" >> $GITHUB_OUTPUT
 
       - name: Extract Images and Commit
         run: |
           # Fix the Git ownership error
           git config --global --add safe.directory /github/workspace
 
-          echo "Listing generated report files:"
-          ls -R architecture/.report
+          echo "Listing generated image files:"
+          ls -R ${{ steps.rename_images.outputs.images_dir }}
           
           # Prepare image folder
           mkdir -p docs/images
           
           # Copy images from the generated report
-          cp -r architecture/.images/* docs/images/
+          cp -r ${{ steps.rename_images.outputs.images_dir }}/* docs/images/
           
           # Cleanup report (optional, keeps repo clean)
           rm -rf architecture/.report
