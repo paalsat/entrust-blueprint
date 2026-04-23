@@ -10,7 +10,7 @@ def rename_images(report_path):
     views_path = os.path.join(report_path, "views")
 
     if not os.path.exists(views_path):
-        print("Views folder '" + views_path + "'not found. Check report path.")
+        print("Views folder '" + views_path + "' not found. Check report path.")
         return
 
     for filename in os.listdir(views_path):
