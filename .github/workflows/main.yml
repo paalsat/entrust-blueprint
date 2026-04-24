@@ -4,12 +4,14 @@ on:
     branches:
       - main
     paths:
-      - 'architecture/**'
+      - 'architecture/**.archimate'
+      - 'architecture/rename_images.py'
   pull_request:
     branches:
       - main
     paths:
-      - 'architecture/**'
+      - 'architecture/**.archimate'
+      - 'architecture/rename_images.py'
 
 jobs:
   archi_export:
