@@ -3,6 +3,13 @@ on:
   push:
     branches:
       - main
+    paths:
+      - 'architecture/**'
+  pull_request:
+    branches:
+      - main
+    paths:
+      - 'architecture/**'
 
 jobs:
   archi_export:
@@ -13,11 +20,6 @@ jobs:
       - name: Checkout Repository
         uses: actions/checkout@v4
 
-#      - name: Prepare Image Directory
-#        run: |
-#          mkdir -p architecture/.images
-#          ls -lRa architecture
-
       - name: Generate Archi Report
         uses: docker://ghcr.io/woozymasta/archimate-ci-image:5.7.0-1.0.6
         with:
@@ -26,7 +28,6 @@ jobs:
             -nosplash -consoleLog -application com.archimatetool.commandline.app
             --loadModel /github/workspace/architecture/entrust_architecture.archimate 
             --html.createReport /github/workspace/architecture/.report
-#            --script.run /github/workspace/architecture/export_views.ajs
 
       - name: Rename Images
         id: rename_images
@@ -42,22 +43,16 @@ jobs:
 
       - name: Extract Images and Commit
         run: |
-          # Fix the Git ownership error
           git config --global --add safe.directory /github/workspace
 
           echo "Listing generated image files:"
           ls -R ${{ steps.rename_images.outputs.images_dir }}
           
-          # Prepare image folder
-          mkdir -p docs/images
-          
-          # Copy images from the generated report
+          mkdir -p docs/images          
           cp -r ${{ steps.rename_images.outputs.images_dir }}/* docs/images/
           
-          # Cleanup report (optional, keeps repo clean)
           rm -rf architecture/.report
           
-          # Commit
           git config --local user.email "action@github.com"
           git config --local user.name "GitHub Action"
           git add docs/images/
