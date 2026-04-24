@@ -1,7 +1,7 @@
 Architecture specifications
 ===========================
 
-.. figure:: images/High_level_capabilities.png
+.. figure:: ../images/High_level_capabilities.png
   :alt: ENTRUST Infrastructure architecture
   :align: center
 
