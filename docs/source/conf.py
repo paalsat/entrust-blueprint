@@ -10,6 +10,8 @@ author = 'The Contributors'
 release = '0.0'
 version = '0.0.0'
 
+html_static_path = ['../images']
+
 # -- General configuration
 
 extensions = [
