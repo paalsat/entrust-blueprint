@@ -20,7 +20,7 @@ jobs:
       contents: write
     steps:
       - name: Checkout Repository
-        uses: actions/checkout@v4
+        uses: actions/checkout@v6
 
       - name: Generate Archi Report
         uses: docker://ghcr.io/woozymasta/archimate-ci-image:5.7.0-1.0.6
